@@ -25,15 +25,15 @@ SECRET_KEY = 'x6199!=e%s-k1r+%#i5(rjo@op24ll(_a@ayayq=k!l0q_+s0e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+ANONYMOUS_USER_ID = [' anonymous ']
 
 INSTALLED_APPS = [
     'accounts',
-#    'events_attendance.apps.EventsAttendanceConfig',
-    #'django-userena-ce.userena',
+   # 'src.userena',
     'events_attendance',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'userena.middleware.UserenaLocaleMiddleware',
+
 ]
 
 ROOT_URLCONF = 'enjaz.urls'
@@ -74,6 +75,9 @@ TEMPLATES = [
 ]
 ANONYMOUS_USER_NAME = 'AnonymousUser'
 
+
+
+
 AUTH_PROFILE_MODULE = 'accounts.MyProfile'
 
 
@@ -86,11 +90,10 @@ EMAIL_HOST_USER = 'yourgmailaccount@gmail.com'
 EMAIL_HOST_PASSWORD = 'yourgmailpassword'
 
 AUTHENTICATION_BACKENDS = (
-   # 'userena.backends.UserenaAuthenticationBackend',
-    #'guardian.backends.ObjectPermissionBackend',
+    'django-userena.userena.backends.UserenaAuthenticationBackend'
+   # 'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
-
-                           )
+)
 
 WSGI_APPLICATION = 'enjaz.wsgi.application'
 
