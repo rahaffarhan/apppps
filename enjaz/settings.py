@@ -25,15 +25,15 @@ SECRET_KEY = 'x6199!=e%s-k1r+%#i5(rjo@op24ll(_a@ayayq=k!l0q_+s0e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
+SITE_ID = 1
 
 
 # Application definition
-ANONYMOUS_USER_ID = [' anonymous ']
 
 INSTALLED_APPS = [
-    'accounts',
-   # 'src.userena',
+    'crispy_forms',
+    'users',
     'events_attendance',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,7 +90,7 @@ EMAIL_HOST_USER = 'yourgmailaccount@gmail.com'
 EMAIL_HOST_PASSWORD = 'yourgmailpassword'
 
 AUTHENTICATION_BACKENDS = (
-    'django-userena.userena.backends.UserenaAuthenticationBackend'
+  #  'django-userena.userena.backends.UserenaAuthenticationBackend'
    # 'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -145,6 +145,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
