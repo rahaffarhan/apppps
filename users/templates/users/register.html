@@ -1,21 +1,70 @@
-{% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags%}
+
 {% block content %}
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
 
-                 <legend class="border-bottom mb-4">create your new account</legend>
-                 {{ form|crispy }}
 
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit"> sign up </button>
-            </div>
+
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already have an account? <a href="{% url 'login' %}"> sign in</a>
-            </small>
-        </div>
+
 </div>
 {% endblock %}
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'users/register/css/base.css' %}">
+<script src="{% static 'users/register/js/profile-edit.js' %}"></script>
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active"></li>
+    <li> </li>
+    <li></li>
+
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <h3 class="fs-subtitle">This is step 1</h3>
+  <input type="text" name="{{ form.field.username|crispy }}" placeholder="Username"/>
+   <input type="text" name="{{ form.field.email|crispy }}" placeholder="Email" />
+    <input type="password" name="{{ form.field.password1|crispy }}" placeholder="Password" />
+    <input type="password" name="{{ form.field.password2|crispy }}" placeholder="Confirm Password" />
+    <input type="submit" name="next" class="next action-button" value="Next"/>
+    <div class="border-top pt-3">
+    <small class="text-muted">
+        Already have an account? <a href="{% url 'login' %}"> sign in</a>
+    </small>
+    </div>
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <h3 class="fs-subtitle">Your presence on the social network</h3>
+    <input type="button" name="next" class="next action-button" value="Next" />
+    <div class="border-top pt-3">
+    <small class="text-muted">
+        Already have an account? <a href="{% url 'login' %}"> sign in</a>
+    </small>
+    </div>
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Create your account</h2>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit"> sign up </button>
+    </div>
+    <div class="border-top pt-3">
+    <small class="text-muted">
+        Already have an account? <a href="{% url 'login' %}"> sign in</a>
+    </small>
+    </div>
+  </fieldset>
+</form>
+
+
+
+

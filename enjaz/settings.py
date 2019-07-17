@@ -34,9 +34,11 @@ SITE_ID = 1
 INSTALLED_APPS = [
     'crispy_forms',
     'users',
+    'ijson',
     'events_attendance',
     'django.contrib.admin',
     'django.contrib.auth',
+    'jquery',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'enjaz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,7 +153,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'events_attendance:home'
 LOGIN_URL = 'login'
 
 STATICFILES_DIRS = (
